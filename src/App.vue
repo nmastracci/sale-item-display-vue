@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <Header />
-    <Stage />
-    <Footer />
+    <div class="grid-container">
+      <div id="style-block"></div>
+      <Stage />
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -29,20 +32,28 @@ body {
   font-weight: 300;
   background-color: #f5f5f5;
   color: #1e1e1e;
-  // chosen text: #2F2F2F
-  // unchosen text: #ACACAC // #989898
-  // secondary colour? #5A5A5A
 }
 #app {
-  margin: 0;
-  padding: 0;
   font-family: "Sulphur Point", Montserrat, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  max-width: 110rem;
-  align-self: center;
+
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(13, 7.5rem);
+  grid-template-rows: repeat(10, 5.5rem);
+  margin: 0 auto;
+  padding-top: 6rem;
+}
+#style-block {
+  grid-row: 1 / span 6;
+  grid-column: 1/3;
+  justify-self: end;
+  background-color: #000;
+  width: 6rem;
 }
 // Global Utility Classes
 .text-bold {

@@ -1,14 +1,15 @@
 <template>
   <div id="stage">
-    <div id="style-block"></div>
     <div id="image-container">
       <img :src="itemContent.image" :alt="itemContent.description" />
     </div>
     <div id="item-content">
-      <h4 class="text-bold">{{ itemContent.default_category }}</h4>
-      <h3 class="text-light">{{ itemContent.name }}</h3>
-      <p>{{ itemContent.description }}</p>
-      <p>${{ itemContent.price }}</p>
+      <div>
+        <h4 class="text-bold">{{ itemContent.default_category }}</h4>
+        <h3 class="text-light">{{ itemContent.name }}</h3>
+        <p>{{ itemContent.description }}</p>
+        <p>${{ itemContent.price }}</p>
+      </div>
       <label class="text-bold">{{ itemContent.option_label }}</label>
       <ul class="gift-option">
         <li
@@ -58,22 +59,27 @@ export default {
 </script>
 <style scoped lang="scss">
 #stage {
-  margin: 4rem 4rem 0;
-  text-align: left;
+  display: grid;
+  grid-row: 1 / 8;
+  grid-column: 3 / 14;
+  grid-template-columns: repeat(11, 7.5rem);
+  grid-template-rows: subgrid;
+  z-index: 1;
 }
 #item-content {
-  margin: 6rem 0 0 -4rem;
-  text-align: left;
+  align-self: center;
+  grid-row: 1 / 8;
+  grid-column: 6 / 11;
   color: #000;
-  max-width: 35rem;
-  display: inline-block;
-  vertical-align: top;
+  z-index: 2;
+
   label,
   h4,
   h3 {
     text-transform: uppercase;
-
     letter-spacing: 0.25rem;
+    margin: 0;
+    padding: 0;
   }
   h3 {
     font-size: 2rem;
@@ -86,18 +92,12 @@ export default {
     border: 0.125rem solid #000;
   }
 }
-#style-block {
-  background-color: #000;
-  width: 6rem;
-  height: 20rem;
-  display: inline-block;
-  vertical-align: top;
-}
+
 #image-container {
-  width: 50rem;
-  height: 50rem;
+  grid-row: 1 / 8;
+  grid-column: 1 / 7;
   background-color: #eee4e5;
-  display: inline-block;
+
   overflow: hidden;
   img {
     height: 100%;

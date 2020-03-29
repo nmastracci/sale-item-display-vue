@@ -51,16 +51,15 @@ export default {
   background-size: cover;
   background-repeat: none;
   display: flex;
-  flex-direction: row;
   color: #ffffff;
-  justify-content: space-evenly;
-  margin-top: -6rem;
-  margin-left: 10rem;
+  grid-row: 7 / 11;
+  grid-column: 3 / 14;
   padding: 10rem 6rem 4rem;
   div {
     display: flex;
     flex-direction: column;
     max-width: 12rem;
+    margin-right: 12rem;
   }
 }
 h4 {

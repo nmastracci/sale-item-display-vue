@@ -21,7 +21,8 @@ export default {};
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin: 0 6rem;
+  margin: 0 auto;
+
   h1 {
     font-size: 3rem;
     text-align: right;
