@@ -26,17 +26,32 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Sulphur+Point:300,400,700&display=swap");
+@import "./scss/_variables.scss";
+/*
+// GLOBAL UTILITY CLASSES
+*/
+.text-bold {
+  font-weight: 700;
+}
+.text-light-weight {
+  font-weight: 300;
+}
+.text-light-colour {
+  color: $main-text-color;
+}
+.pointer {
+  cursor: pointer;
+}
+/* */
 
 body {
   font-family: "Sulphur Point", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   background-color: #f5f5f5;
-  color: #1e1e1e;
 }
 #app {
   font-family: "Sulphur Point", Montserrat, sans-serif;
-  color: #2c3e50;
-
+  color: $main-text-color;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -44,7 +59,7 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(13, 7.5rem);
-  grid-template-rows: repeat(10, 5.5rem);
+  grid-template-rows: repeat(10, 6.5rem);
   margin: 0 auto;
   padding-top: 6rem;
 }
@@ -52,14 +67,7 @@ body {
   grid-row: 1 / span 6;
   grid-column: 1/3;
   justify-self: end;
-  background-color: #000;
+  background-color: #090c10;
   width: 6rem;
-}
-// Global Utility Classes
-.text-bold {
-  font-weight: 700;
-}
-.text-light {
-  font-weight: 300;
 }
 </style>

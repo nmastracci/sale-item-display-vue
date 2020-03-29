@@ -3,7 +3,11 @@
     <div v-for="(list, i) in lists" :key="i + '-footer'">
       <h4>{{ list.label }}</h4>
       <ul v-if="list.listItems">
-        <li v-for="(listItem, i) in list.listItems" :key="i + '-footer-listItem'">{{ listItem }}</li>
+        <li
+          v-for="(listItem, i) in list.listItems"
+          :key="i + '-footer-listItem'"
+          class="text-light-weight"
+        >{{ listItem }}</li>
       </ul>
     </div>
   </div>
@@ -66,6 +70,7 @@ h4 {
   text-transform: uppercase;
   text-align: left;
   margin: 0.5rem 0;
+  color: #e8e8e8;
 }
 ul {
   text-decoration: none;
@@ -75,7 +80,7 @@ ul {
   li {
     margin: 0.5rem 0;
     text-decoration: none;
-    color: #ffffff;
+    color: #c1c1c1;
     text-align: left;
   }
 }

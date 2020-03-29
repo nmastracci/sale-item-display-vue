@@ -6,15 +6,16 @@
     <div id="item-content">
       <div>
         <h4 class="text-bold">{{ itemContent.default_category }}</h4>
-        <h3 class="text-light">{{ itemContent.name }}</h3>
-        <p>{{ itemContent.description }}</p>
-        <p>${{ itemContent.price }}</p>
+        <h3 class="text-light-weight">{{ itemContent.name }}</h3>
+        <p class="text-light-weight">{{ itemContent.description }}</p>
+        <p>$ {{ itemContent.price }}</p>
       </div>
       <label class="text-bold">{{ itemContent.option_label }}</label>
       <ul class="gift-option">
         <li
           v-for="(option, i) in itemContent.gift_options"
           :key="i + '-gift-option'"
+          class="pointer"
         >{{ option.description }}</li>
       </ul>
       <button>Add to Bag</button>
@@ -28,7 +29,7 @@ export default {
   name: "Stage",
   data() {
     return {
-      itemId: 2529,
+      itemId: 2530,
       itemContent: {
         default_category: "Dress",
         name: "Roxane",
@@ -57,7 +58,8 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss">
+<style  lang="scss">
+@import "../scss/_variables.scss";
 #stage {
   display: grid;
   grid-row: 1 / 8;
@@ -70,9 +72,15 @@ export default {
   align-self: center;
   grid-row: 1 / 8;
   grid-column: 6 / 11;
-  color: #000;
+  padding-left: 4rem;
+  // Note: The original mockup colour is somewhere around #2c3e50
+  // however the overlaid text becomes barely visible
+  // therefore an executive decision to increase the text colour contrast was made
+  color: #090c10;
   z-index: 2;
-
+  div {
+    padding-bottom: 1rem;
+  }
   label,
   h4,
   h3 {
@@ -84,12 +92,24 @@ export default {
   h3 {
     font-size: 2rem;
   }
+  h4 {
+    margin-bottom: 1.5rem;
+  }
+  p {
+    margin: 0 0 1.5rem;
+  }
   button {
     margin: 6rem 0;
     padding: 0.5rem 3rem;
     text-transform: uppercase;
     background-color: transparent;
-    border: 0.125rem solid #000;
+    border: 0.125rem solid #090c10;
+    transition: all 0.3s ease;
+    &:hover {
+      border: 0.125rem solid $main-text-color;
+      background-color: $main-text-color;
+      color: #fff;
+    }
   }
 }
 
@@ -105,13 +125,13 @@ export default {
   }
 }
 .gift-option {
-  color: #000;
+  color: #090c10;
   list-style: none;
   display: flex;
   margin: 0.5rem 0;
   padding: 0;
   li {
-    margin-right: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 </style>
