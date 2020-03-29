@@ -46,7 +46,10 @@ export default {
 
 <style lang="scss" scoped>
 #footer {
-  background-color: #000000;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)),
+    url("./../../public/black-marble-texture.png");
+  background-size: cover;
+  background-repeat: none;
   display: flex;
   flex-direction: row;
   color: #ffffff;
