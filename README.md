@@ -1,8 +1,8 @@
-# sale-item-display-vue
+# Displaying Items for Sale with Vue
 
 ## The Task
 
-For this task, you are to convert this screenshot into a vue page that
+For this task, convert the screenshot below into a vue page that
 matches the look of it. The vue page should take a gift id in the
 parameter, and should retrieve the product details from an API call
 using the provided gift id.
