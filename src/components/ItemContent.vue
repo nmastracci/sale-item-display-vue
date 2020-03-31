@@ -62,7 +62,7 @@ export default {
 .item-content {
   align-self: center;
   grid-row: 1 / 8;
-  grid-column: 6 / 11;
+  grid-column: 6 / 12;
   padding-left: 4rem;
   margin-bottom: 6rem;
   // Note: The original mockup colour is somewhere around #2c3e50
@@ -89,6 +89,9 @@ export default {
   }
   p {
     margin: 0.5rem 0 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 8rem;
   }
   button {
     margin: 3rem 0 0;
@@ -125,15 +128,19 @@ export default {
 .gift-option {
   list-style: none;
   display: flex;
-  margin: 1rem 0;
+  margin: 0;
   padding: 0;
+  flex-wrap: wrap;
+  line-height: 1rem;
   li {
+    margin: 1rem 0 0;
     input {
       visibility: hidden;
     }
     label {
       cursor: pointer;
       color: $light-text-color;
+      letter-spacing: 0;
     }
     .active-selection {
       color: darken($main-text-color, 50%);

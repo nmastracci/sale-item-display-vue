@@ -5,20 +5,27 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    itemId: 2530,
+    itemId: 2529,
     itemContent: {
-      default_category: 'Dress',
-      name: 'Roxane',
-      description: 'Crossover-neck dress in stretch crepe',
-      price: 199,
-      image: 'https://images.giftagram.com/category_placeholder.png',
-      option_label: 'Colour',
+      default_category: 'For Her',
+      name: 'Bing Bang Tiny Vivienne Silver Ring',
+      description:
+        'Mini stack ring featuring a chic little spike, a modern and edgy silhouette that will never go out of style!',
+      price: 65,
+      image: 'https://gift-images.giftagram.com/1458853900.png',
+      option_label: 'Size',
       gift_options: [
         {
-          description: 'Noir'
+          description: '4'
         },
         {
-          description: 'Blanc'
+          description: '6'
+        },
+        {
+          description: '7'
+        },
+        {
+          description: '8'
         }
       ]
     }
@@ -26,16 +33,30 @@ export default new Vuex.Store({
   mutations: {
     setItemContent(state, itemContent) {
       state.itemContent = itemContent;
+    },
+    increment(state) {
+      state.itemId++;
+    },
+    decrement(state) {
+      state.itemId--;
     }
   },
   actions: {
-    getItem({ id }) {
+    getItem(context) {
       axios
-        .get(`https://portal.giftagram.com/api/gift/details?ids=2529`)
+        .get(
+          `https://portal.giftagram.com/api/gift/details?ids=${context.state.itemId}`
+        )
         .then(response => {
-          this.commit('setItemContent', response.data.data[0]);
+          context.commit('setItemContent', response.data.data[0]);
         })
         .catch(error => console.log(error));
+    },
+    incrementItemId(context) {
+      context.commit('increment');
+    },
+    decrementItemId(context) {
+      context.commit('decrement');
     }
   }
 });

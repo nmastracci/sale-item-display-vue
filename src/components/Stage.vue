@@ -1,5 +1,9 @@
 <template>
   <div id="stage">
+    <div class="navigation">
+      <span class="pointer" @click="previousGift">Prev</span>
+      <span class="pointer" @click="nextGift">Next>></span>
+    </div>
     <div id="image-container">
       <img :src="itemContent.image" :alt="itemContent.description" />
     </div>
@@ -25,6 +29,18 @@ export default {
     itemContent() {
       return this.$store.state.itemContent;
     }
+  },
+  methods: {
+    nextGift() {
+      this.$store
+        .dispatch('incrementItemId')
+        .then(() => this.$store.dispatch('getItem'));
+    },
+    previousGift() {
+      this.$store
+        .dispatch('decrementItemId')
+        .then(() => this.$store.dispatch('getItem'));
+    }
   }
 };
 </script>
@@ -46,6 +62,15 @@ export default {
       height: 100%;
       object-fit: cover;
     }
+  }
+}
+.navigation {
+  grid-row: 1/2;
+  grid-column: 11/12;
+  z-index: 4;
+  span {
+    text-transform: uppercase;
+    margin: 0.75rem;
   }
 }
 </style>

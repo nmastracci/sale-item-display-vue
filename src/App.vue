@@ -21,9 +21,13 @@ export default {
     Stage,
     Footer
   },
+  computed: {
+    itemId() {
+      return this.$store.state.itemId;
+    }
+  },
   created() {
-    const id = this.$store.state.itemId;
-    this.$store.dispatch('getItem', { id });
+    this.$store.dispatch('getItem');
   }
 };
 </script>
