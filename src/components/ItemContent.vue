@@ -5,7 +5,7 @@
       <h3 @click="toggleParentClass" class="text-light-weight">
         {{ itemContent.name }}
       </h3>
-      <p class="text-light-weight">{{ itemContent.description }}</p>
+      <span class="text-light-weight">{{ trimDescription }}</span>
       <p>$ {{ itemContent.price }}</p>
     </div>
     <label>{{ itemContent.option_label }}</label>
@@ -52,6 +52,10 @@ export default {
   computed: {
     itemContent() {
       return this.$store.state.itemContent;
+    },
+    trimDescription() {
+      const description = this.itemContent.description;
+      return description.split('\n')[0];
     }
   }
 };
@@ -89,8 +93,6 @@ export default {
   }
   p {
     margin: 0.5rem 0 1.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-height: 8rem;
   }
   button {
