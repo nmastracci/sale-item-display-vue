@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
+import router from '../router/index';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -34,6 +35,9 @@ export default new Vuex.Store({
     setItemContent(state, itemContent) {
       state.itemContent = itemContent;
     },
+    setItemId(state, itemId) {
+      state.itemId = itemId;
+    },
     increment(state) {
       state.itemId++;
     },
@@ -48,6 +52,10 @@ export default new Vuex.Store({
           `https://portal.giftagram.com/api/gift/details?ids=${context.state.itemId}`
         )
         .then(response => {
+          router.push({
+            name: 'gift',
+            params: { id: context.state.itemId }
+          });
           context.commit('setItemContent', response.data.data[0]);
         })
         .catch(error => console.log(error));
