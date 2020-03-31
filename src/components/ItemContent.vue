@@ -2,46 +2,63 @@
   <div :class="refactor ? 'item-content-refactored' : 'item-content'">
     <div>
       <h4 class="text-bold">{{ itemContent.default_category }}</h4>
-      <h3 @click="toggleParentClass" class="text-light-weight">{{ itemContent.name }}</h3>
+      <h3 @click="toggleParentClass" class="text-light-weight">
+        {{ itemContent.name }}
+      </h3>
       <p class="text-light-weight">{{ itemContent.description }}</p>
       <p>$ {{ itemContent.price }}</p>
     </div>
-    <label class="text-bold">{{ itemContent.option_label }}</label>
+    <label>{{ itemContent.option_label }}</label>
     <ul class="gift-option">
       <li
         v-for="(option, i) in itemContent.gift_options"
         :key="i + '-gift-option'"
-        class="pointer"
-      >{{ option.description }}</li>
+        class="'pointer'"
+        @click="selectOption(i)"
+      >
+        <label
+          :for="option.description"
+          :class="[{ 'active-selection': i === activeSelection }]"
+          >{{ option.description }}
+          <input
+            type="radio"
+            :value="option.description"
+            :name="option.description"
+          />
+        </label>
+      </li>
     </ul>
     <button>Add to Bag</button>
   </div>
 </template>
 <script>
 export default {
-  name: "ItemContent",
-  props: {
-    itemContentProp: {
-      type: Object,
-      required: true
-    }
-  },
+  name: 'ItemContent',
+
   data() {
     return {
-      itemContent: this.itemContentProp,
-      refactor: false
+      refactor: false,
+      activeSelection: 0
     };
   },
   methods: {
     toggleParentClass() {
       this.refactor = !this.refactor;
+    },
+    selectOption(i) {
+      this.activeSelection = i;
+    }
+  },
+  computed: {
+    itemContent() {
+      return this.$store.state.itemContent;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_variables.scss";
+@import '../scss/_variables.scss';
 .item-content {
   align-self: center;
   grid-row: 1 / 8;
@@ -51,10 +68,10 @@ export default {
   // Note: The original mockup colour is somewhere around #2c3e50
   // however the overlaid text becomes barely visible
   // therefore an executive decision to increase the text colour contrast was made
-  color: #090c10;
+  color: $dark-text-color;
   z-index: 2;
   div {
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
   }
   label,
   h4,
@@ -68,22 +85,23 @@ export default {
     font-size: 2rem;
   }
   h4 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
   p {
-    margin: 0 0 1.5rem;
+    margin: 0.5rem 0 1.5rem;
   }
   button {
-    margin: 6rem 0 0;
+    margin: 3rem 0 0;
     padding: 0.5rem 3rem;
     text-transform: uppercase;
     background-color: transparent;
-    border: 0.125rem solid #090c10;
+    border: 0.125rem solid $dark-text-color;
     transition: all 0.3s ease;
     &:hover {
       border: 0.125rem solid $main-text-color;
       background-color: $main-text-color;
       color: #fff;
+      font-weight: 500;
     }
   }
 }
@@ -92,16 +110,35 @@ export default {
   padding: 2rem;
   background-color: #fff;
   margin-left: 2rem;
+  color: $main-text-color;
+  .gift-option {
+    label {
+      color: lighten($main-text-color, 10%);
+    }
+    .active-selection {
+      color: darken($main-text-color, 50%);
+      font-weight: 900;
+    }
+  }
 }
 
 .gift-option {
-  color: #090c10;
   list-style: none;
   display: flex;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   padding: 0;
   li {
-    padding-right: 1.5rem;
+    input {
+      visibility: hidden;
+    }
+    label {
+      cursor: pointer;
+      color: $light-text-color;
+    }
+    .active-selection {
+      color: darken($main-text-color, 50%);
+      font-weight: 500;
+    }
   }
 }
 </style>

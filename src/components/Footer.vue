@@ -7,7 +7,9 @@
           v-for="(listItem, i) in list.listItems"
           :key="i + '-footer-listItem'"
           class="text-light-weight"
-        >{{ listItem }}</li>
+        >
+          {{ listItem }}
+        </li>
       </ul>
     </div>
   </div>
@@ -15,31 +17,31 @@
 
 <script>
 export default {
-  name: "Footer",
+  name: 'Footer',
   data() {
     return {
       lists: [
         {
-          label: "Main Fabric",
+          label: 'Main Fabric',
           listItems: [
-            "63% Polyester",
-            "27% Viiscose",
-            "7% Coton",
-            "3% Elasthanne"
+            '63% Polyester',
+            '27% Viiscose',
+            '7% Coton',
+            '3% Elasthanne'
           ]
         },
         {
-          label: "Main Lining",
-          listItems: ["67% Acetate", "33% Polyester"]
+          label: 'Main Lining',
+          listItems: ['67% Acetate', '33% Polyester']
         },
         {
-          label: "Care Instructions",
+          label: 'Care Instructions',
           listItems: [
-            "Delicate wash 30*",
-            "Do not bleach",
-            "Ironing max 110*",
-            "Dryclean using any solvent except Trichloroethylene",
-            "Do not tumble dry"
+            'Delicate wash 30*',
+            'Do not bleach',
+            'Ironing max 110*',
+            'Dryclean using any solvent except Trichloroethylene',
+            'Do not tumble dry'
           ]
         }
       ]
@@ -49,28 +51,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../scss/_variables.scss';
 #footer {
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)),
-    url("./../../public/black-marble-texture.png");
+    url('./../../public/black-marble-texture.png');
   background-size: cover;
   background-repeat: none;
   display: flex;
-  color: #ffffff;
+
   grid-row: 7 / 11;
   grid-column: 3 / 14;
   padding: 10rem 6rem 4rem;
+
   div {
     display: flex;
     flex-direction: column;
-    max-width: 12rem;
-    margin-right: 12rem;
+    max-width: 19rem;
+    margin-right: 9rem;
   }
 }
 h4 {
   text-transform: uppercase;
   text-align: left;
   margin: 0.5rem 0;
-  color: #e8e8e8;
+  color: $light-text-color;
+  font-weight: 500;
+  font-size: 0.5rem;
 }
 ul {
   text-decoration: none;
@@ -80,8 +86,10 @@ ul {
   li {
     margin: 0.5rem 0;
     text-decoration: none;
-    color: #c1c1c1;
+    color: $light-text-color;
     text-align: left;
+    font-size: 0.5rem;
+    line-height: 1.5rem;
   }
 }
 </style>

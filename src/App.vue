@@ -10,31 +10,35 @@
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import Stage from "./components/Stage.vue";
-import Footer from "./components/Footer.vue";
+import Header from './components/Header.vue';
+import Stage from './components/Stage.vue';
+import Footer from './components/Footer.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Header,
     Stage,
     Footer
+  },
+  created() {
+    const id = this.$store.state.itemId;
+    this.$store.dispatch('getItem', { id });
   }
 };
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css?family=Sulphur+Point:300,400,700&display=swap");
-@import "./scss/_variables.scss";
+@import url('https://fonts.googleapis.com/css?family=Spartan:200,500,900&display=swap');
+@import './scss/_variables.scss';
 /*
 // GLOBAL UTILITY CLASSES
 */
 .text-bold {
-  font-weight: 700;
+  font-weight: 900;
 }
 .text-light-weight {
-  font-weight: 300;
+  font-weight: 200;
 }
 .text-light-colour {
   color: $main-text-color;
@@ -45,12 +49,12 @@ export default {
 /* */
 
 body {
-  font-family: "Sulphur Point", sans-serif;
-  font-weight: 400;
+  font-family: $font-family;
+  font-weight: 500;
   background-color: #f5f5f5;
 }
 #app {
-  font-family: "Sulphur Point", Montserrat, sans-serif;
+  font-family: $font-family;
   color: $main-text-color;
   margin: 0 auto;
   display: flex;
@@ -67,7 +71,7 @@ body {
   grid-row: 1 / span 6;
   grid-column: 1/3;
   justify-self: end;
-  background-color: #090c10;
+  background-color: $dark-text-color;
   width: 6rem;
 }
 </style>

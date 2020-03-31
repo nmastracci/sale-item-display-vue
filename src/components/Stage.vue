@@ -3,50 +3,32 @@
     <div id="image-container">
       <img :src="itemContent.image" :alt="itemContent.description" />
     </div>
-    <ItemContent :item-content-prop="itemContent" />
+    <div class="next-item"></div>
+    <ItemContent />
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import ItemContent from "./ItemContent";
+import ItemContent from './ItemContent';
 export default {
-  name: "Stage",
+  name: 'Stage',
   components: {
     ItemContent
   },
   data() {
-    return {
-      itemId: 2530,
-      itemContent: {
-        default_category: "Dress",
-        name: "Roxane",
-        description: "Crossover-neck dress in stretch crepe",
-        price: 199,
-        image: "https://images.giftagram.com/category_placeholder.png",
-        option_label: "Colour",
-        gift_options: [
-          {
-            description: "Noir"
-          },
-          {
-            description: "Blanc"
-          }
-        ]
-      }
-    };
+    return {};
   },
-  created() {
-    axios
-      .get(`https://portal.giftagram.com/api/gift/details?ids=${this.itemId}`)
-      .then(response => {
-        this.itemContent = response.data.data[0];
-      })
-      .catch(error => console.log(error));
+  computed: {
+    itemId() {
+      return this.$store.state.itemId;
+    },
+    itemContent() {
+      return this.$store.state.itemContent;
+    }
   }
 };
 </script>
-<style  lang="scss" scoped>
+<style lang="scss" scoped>
 #stage {
   display: grid;
   grid-row: 1 / 8;

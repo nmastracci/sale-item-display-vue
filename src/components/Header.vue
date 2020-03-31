@@ -26,7 +26,7 @@ export default {};
   h1 {
     font-size: 3rem;
     text-align: right;
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 5rem;
   }
   ul {
@@ -38,7 +38,7 @@ export default {};
       text-transform: uppercase;
       letter-spacing: 0.25rem;
       font-size: 0.75rem;
-      font-weight: 700;
+      font-weight: 500;
       display: inline-block;
       margin-right: 6rem;
     }
