@@ -1,8 +1,8 @@
 <template>
   <div id="stage">
     <div class="navigation">
-      <span class="pointer" @click="previousGift">Prev</span>
-      <span class="pointer" @click="nextGift">Next>></span>
+      <span class="pointer text-hover" @click="previousGift">Prev</span>
+      <span class="pointer text-hover" @click="nextGift">Next>></span>
     </div>
     <div id="image-container">
       <img :src="itemContent.image" :alt="itemContent.description" />

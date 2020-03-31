@@ -50,6 +50,12 @@ export default {
 .pointer {
   cursor: pointer;
 }
+.text-hover {
+  transition: all 0.5s ease;
+  &:hover {
+    font-weight: 900;
+  }
+}
 /* */
 
 body {
