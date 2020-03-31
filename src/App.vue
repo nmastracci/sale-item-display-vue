@@ -51,7 +51,7 @@ export default {
   cursor: pointer;
 }
 .text-hover {
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
   &:hover {
     font-weight: 900;
   }
