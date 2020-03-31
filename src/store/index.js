@@ -65,6 +65,9 @@ export default new Vuex.Store({
     },
     decrementItemId(context) {
       context.commit('decrement');
+    },
+    updateItemId(context, id) {
+      context.commit('setItemId', id);
     }
   }
 });

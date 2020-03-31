@@ -28,6 +28,15 @@ export default {
   },
   created() {
     this.$store.dispatch('getItem');
+  },
+  watch: {
+    $route(to) {
+      if (this.$store.state.itemId !== to.params.id) {
+        this.$store
+          .dispatch('updateItemId', to.params.id)
+          .then(() => this.$store.dispatch('getItem'));
+      }
+    }
   }
 };
 </script>
